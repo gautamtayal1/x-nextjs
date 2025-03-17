@@ -21,7 +21,7 @@ model User {
   followersId  Follow[] @relation("UserFollowers")
   followingId  Follow[] @relation("UserFollowing")
   posts        Post[]
-  profilePhoto String
+  profilePhoto String?
   createdAt    DateTime @default(now())
 }
 
@@ -40,8 +40,8 @@ model Post {
   user      User      @relation(fields: [userId], references: [id])
   createdAt DateTime  @default(now())
   content   String
-  media     String
-  likes     Int
+  media     String?
+  likes     Int       @default(0)
   comments  Comment[]
 }
 
@@ -50,5 +50,5 @@ model Comment {
   postId  Int
   post    Post   @relation(fields: [postId], references: [id])
   content String
-  likes   String
+  likes   Int    @default(0)
 }

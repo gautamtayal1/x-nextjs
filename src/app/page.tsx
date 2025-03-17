@@ -1,5 +1,5 @@
 import { ModeToggle } from "@/components/toogle";
-import { SignInButton } from "@clerk/nextjs";
+import { SignInButton, UserButton } from "@clerk/nextjs";
 
 export default function Home() {
   return(
@@ -8,6 +8,7 @@ export default function Home() {
       <div className="right">
         <ModeToggle />
         <SignInButton />
+        <UserButton />
       </div>
     </div>
   )
