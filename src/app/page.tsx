@@ -1,23 +1,21 @@
 import MainCreatePost from "@/components/MainCreatePost";
 import Navbar from "@/components/Navbar";
 import { PostCard } from "@/components/PostCard";
-import { RightBar } from "@/components/ui/RightBar";
+import { RightBar } from "@/components/RightBar";
 import { prisma } from "@/lib/prisma";
 
-
 export default async function Home() {
-
+  
     const posts = await prisma.post.findMany({
       include: {
         user: true
       }
     })
-    console.log(posts)
-
+    
   return(
-    <div className="flex">
+    <div className="container flex">
       <Navbar />
-      <div className="my-5">
+      <div className="my-5 w-[90%] m-8 flex flex-col gap-5">
       <MainCreatePost />
       {posts.map((post) => (
           <div key={post.id}>
@@ -33,8 +31,6 @@ export default async function Home() {
           </div>
         ))}
       </div>
-        
-      
       <RightBar />
     </div>
   )

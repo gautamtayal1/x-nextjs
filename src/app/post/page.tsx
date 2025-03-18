@@ -1,9 +1,16 @@
+import MainCreatePost from '@/components/MainCreatePost'
+import Navbar from '@/components/Navbar'
+import { RightBar } from '@/components/RightBar'
 import React from 'react'
 
-const page = () => {
+const CreatePostPage = async() => {
   return (
-    <div>page</div>
+    <div className='flex gap-2 my-3'> 
+      <Navbar />
+      <MainCreatePost />
+      <RightBar />
+    </div>
   )
 }
 
-export default page
+export default CreatePostPage

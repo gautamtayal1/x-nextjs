@@ -14,8 +14,7 @@ datasource db {
 }
 
 model User {
-  id           String   @unique @default(uuid())
-  clerkId      String
+  id           String   @unique
   name         String
   username     String   @unique
   followersId  Follow[] @relation("UserFollowers")

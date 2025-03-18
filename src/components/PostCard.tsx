@@ -22,7 +22,7 @@ export const PostCard = (
   profilePhoto
  }) => {
   return (
-    <Card className="w-[92%] mx-auto my-5">
+    <Card>
       <CardHeader>
         <div className="flex items-center gap-2">
           <Image src={profilePhoto} 

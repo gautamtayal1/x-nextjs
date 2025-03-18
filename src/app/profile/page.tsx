@@ -1,8 +1,13 @@
+import Navbar from '@/components/Navbar'
+import { RightBar } from '@/components/RightBar'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>page</div>
+    <div>
+      <Navbar />
+      <RightBar />
+    </div>
   )
 }
 

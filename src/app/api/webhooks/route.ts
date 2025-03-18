@@ -57,7 +57,7 @@ export async function POST(req: Request) {
     try {
       const newUser = await prisma.user.create({
         data: {
-          clerkId: id,
+          id,
           name: `${first_name || ''} ${last_name || ''}`.trim(),
           username: first_name + Math.round(Math.random()*1000),
           profilePhoto: profile_image_url
