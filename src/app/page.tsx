@@ -1,3 +1,4 @@
+import MainCreatePost from "@/components/MainCreatePost";
 import Navbar from "@/components/Navbar";
 import { PostCard } from "@/components/PostCard";
 import { RightBar } from "@/components/ui/RightBar";
@@ -16,7 +17,8 @@ export default async function Home() {
   return(
     <div className="flex">
       <Navbar />
-      <div>
+      <div className="my-5">
+      <MainCreatePost />
       {posts.map((post) => (
           <div key={post.id}>
           <PostCard id={post.id}

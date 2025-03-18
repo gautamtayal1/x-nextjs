@@ -59,7 +59,7 @@ export async function POST(req: Request) {
         data: {
           clerkId: id,
           name: `${first_name || ''} ${last_name || ''}`.trim(),
-          username: first_name.toLowerCase() + Math.round(Math.random()*1000),
+          username: first_name + Math.round(Math.random()*1000),
           profilePhoto: profile_image_url
         }
       })
