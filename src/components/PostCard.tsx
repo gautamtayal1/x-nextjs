@@ -13,6 +13,7 @@ import Image from "next/image"
 import { Button } from "./ui/button"
 import { useEffect, useState } from "react"
 import axios from "axios"
+import Link from "next/link"
 
 export const PostCard = (
   {cardId, 
@@ -116,9 +117,11 @@ export const PostCard = (
           </Button>}
         </div>
       </CardHeader>
+      <Link href={`/post/${cardId}`}>
       <CardContent>
         <p>{content}</p>
       </CardContent>
+      </Link>
       <CardFooter className="flex gap-3">
         <div className="flex gap-1 justify-center items-center">
           <Heart 
@@ -127,9 +130,10 @@ export const PostCard = (
           onClick={() => handleLike(cardId)}/>
           <p>{like || 0}</p>
         </div>
-        <MessageCircle 
-        size={20}
-        />
+        <Link href={`/post/${cardId}`}>
+          <MessageCircle size={20}/>
+        </Link>
+        
       </CardFooter>
     </Card>
   )
