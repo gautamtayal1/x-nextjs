@@ -21,6 +21,7 @@ model User {
   followingId  Follow[] @relation("UserFollowing")
   posts        Post[]
   profilePhoto String?
+  coverPhoto   String?
   createdAt    DateTime @default(now())
 }
 
