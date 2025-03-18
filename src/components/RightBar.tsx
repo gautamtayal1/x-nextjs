@@ -14,11 +14,10 @@ export function RightBar() {
   async function getUsers(){
     const users = await axios.get("/api/profile")
     setUsers(users.data)
-    
   }
   useEffect(() => {
     getUsers()
-  })
+  }, [])
 
   return (
     <div className="max-w-[20%]">

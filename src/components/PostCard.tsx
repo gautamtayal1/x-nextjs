@@ -28,6 +28,8 @@ export const PostCard = (
 
   const [followed, setFollowed] = useState(false)
   const [followedUser, setFollowedUser] = useState([])
+  const [like, setLike] = useState(likes || 0)
+  const [likeClicked, setLikeClicked] = useState(false)
 
   const handleFollow = (toUserId) => {
     setFollowed(!followed)
@@ -37,7 +39,6 @@ export const PostCard = (
       unfollowReq(toUserId)
     }
   }
-  
   useEffect(() => {
     const fetchFollowed = async() => {
       try {
@@ -49,12 +50,10 @@ export const PostCard = (
         console.log(error)}}
     
       fetchFollowed()}, [])
-
   useEffect(() => {
         const isFollowing = followedUser.find((user) => user.toUserId === userId);
         setFollowed(!!isFollowing);
     }, [followedUser, userId]);
-
   const followReq = async(toUserId) => {
     try {
       await axios.post("http://localhost:3000/api/follow", {
@@ -75,6 +74,26 @@ export const PostCard = (
       console.log("Unfollowed")
     } catch (error) {
       console.log(error)
+    }
+  }
+  const handleLike = async(cardId) => {
+    const prevLikes = like
+    const newLikeClicked = !likeClicked
+    setLikeClicked(newLikeClicked)
+    try {
+      if(newLikeClicked){
+        setLike(like+1)
+        await axios.put("/api/post/like", {
+          cardId, action: "like"})
+      } else {
+        setLike(like-1)
+        await axios.put("/api/post/like", {
+          cardId, action: "dislike"})
+      }
+    } catch (error) {
+      console.log(error)
+      setLike(prevLikes)
+      setLikeClicked(prevLikeClicked)
     }
   }
 
@@ -104,10 +123,10 @@ export const PostCard = (
         <div className="flex gap-1 justify-center items-center">
           <Heart 
           size={20}
-          fill="red"/>
-          <p>{likes}</p>
+          fill="red"
+          onClick={() => handleLike(cardId)}/>
+          <p>{like || 0}</p>
         </div>
-        
         <MessageCircle 
         size={20}
         />
