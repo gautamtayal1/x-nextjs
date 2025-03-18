@@ -3,10 +3,8 @@ import { NextResponse } from "next/server"
 
 export async function GET(req, { params }) {
   try {
-    const { id } = params
-    if (!id) {
-      return NextResponse.json({ error: "Post ID is required" }, { status: 400 })
-    }
+    const { id } = await params
+    
     const post = await prisma.post.findUnique({
       where: { id: parseInt(id) },
       include: {

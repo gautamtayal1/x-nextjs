@@ -28,9 +28,30 @@ const PostPage = () => {
     
   }, [id])
 
-  const handleSubmit = () => {
-    
+  const handleSubmit = async(e) => {
+    e.preventDefault()
+    try {
+      await axios.post(`/api/post/${id}/comment`, {
+        content: comment
+      })
+      
+    } catch (error) {
+      console.error(error)
+    }
+    getComments()
   }
+
+  const getComments = async() => {
+    try {
+      await axios.get(`/api/post/${id}/comment`)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    getComments()
+  }, [])
 
   return (
     <div className='flex'>
