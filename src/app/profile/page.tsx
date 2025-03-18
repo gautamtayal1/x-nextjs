@@ -5,9 +5,9 @@ import { currentUser } from '@clerk/nextjs/server'
 import React from 'react'
 import Image from 'next/image'
 import { PostCard } from '@/components/PostCard'
+import { Button } from '@/components/ui/button'
 
 const page = async() => {
-  
   const {id} = await currentUser()
   const user = await prisma.user.findUnique({
     where: {
@@ -30,9 +30,9 @@ const page = async() => {
   })
 
   return (
-    <div className='flex'>
+    <div className='flex p-10'>
       <Navbar />
-        <div className='w-[50vw]'>
+        <div className='w-[55vw]'>
         <div className="relative">
           {/* Cover Photo */}
           <div className="w-full h-[200px] bg-gray-200 relative">
@@ -47,9 +47,13 @@ const page = async() => {
               <div className="w-full h-full bg-gray-700" />
             )}
           </div>
-
+            <div className='flex justify-end items-center mr-5 mt-5'>
+              <Button>
+                Edit Profile
+              </Button>
+            </div>
           {/* Profile Photo */}
-          <div className="absolute -bottom-16 left-4">
+          <div className="absolute -bottom-10 left-4">
             <div className="w-32 h-32 rounded-full border-4 border-white bg-white overflow-hidden">
               {user?.profilePhoto ? (
                 <Image

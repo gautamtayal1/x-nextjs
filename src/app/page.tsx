@@ -3,9 +3,10 @@ import Navbar from "@/components/Navbar";
 import { PostCard } from "@/components/PostCard";
 import { RightBar } from "@/components/RightBar";
 import { prisma } from "@/lib/prisma";
+import { currentUser } from "@clerk/nextjs/server";
 
 export default async function Home() {
-  
+  const {id} = await currentUser()
   const posts = await prisma.post.findMany({
     include: {
       user: true
@@ -18,7 +19,7 @@ export default async function Home() {
       <MainCreatePost />
       {posts.map((post) => (
         <div key={post.id}>
-        <PostCard id={post.id}
+        <PostCard cardId={post.id}
         content={post.content}
         likes={post.likes}
         createdAt={post.createdAt}
@@ -26,6 +27,7 @@ export default async function Home() {
         name={post.user.name}
         username={post.user.username}
         profilePhoto={post.user. profilePhoto}
+        personalId = {id}
         />
         </div>
       ))}

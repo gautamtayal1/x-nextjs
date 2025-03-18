@@ -31,11 +31,11 @@ const items = [
     url: "/profile",
     icon: Calendar,
   },
-  {
-    title: "Post",
-    url: "/post",
-    icon: Search,
-  },
+  // {
+  //   title: "Post",
+  //   url: "/post",
+  //   icon: Search,
+  // },
   // {
   //   title: "Settings",
   //   url: "#",
