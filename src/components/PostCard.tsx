@@ -37,6 +37,7 @@ export const PostCard = (
       unfollowReq(toUserId)
     }
   }
+  
   useEffect(() => {
     const fetchFollowed = async() => {
       try {
@@ -49,10 +50,10 @@ export const PostCard = (
     
       fetchFollowed()}, [])
 
-      useEffect(() => {
+  useEffect(() => {
         const isFollowing = followedUser.find((user) => user.toUserId === userId);
         setFollowed(!!isFollowing);
-      }, [followedUser, userId]);
+    }, [followedUser, userId]);
 
   const followReq = async(toUserId) => {
     try {
@@ -91,7 +92,8 @@ export const PostCard = (
           {personalId !== userId && <Button 
           className="ml-[40%]"
           onClick={() => handleFollow(userId)}>
-            { followed ? "Unfollow" : "Follow"}
+            { userId !== personalId &&
+            followed ? "Unfollow" : "Follow"}
           </Button>}
         </div>
       </CardHeader>

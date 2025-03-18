@@ -8,7 +8,11 @@ import { PostCard } from '@/components/PostCard'
 import { Button } from '@/components/ui/button'
 
 const page = async() => {
-  const {id} = await currentUser()
+  const user1 = await currentUser()
+  if (!user1) {
+    return <h1>no user</h1>
+  }
+  const { id } = user1;
   const user = await prisma.user.findUnique({
     where: {
       id
@@ -85,11 +89,9 @@ const page = async() => {
           <h1 className='text-2xl font-bold mb-4'>Posts</h1>
           <div className='flex flex-col gap-7'>
             {
-              posts.length === 0 ? 
-              <div>No posts yet</div> :
               posts.map((post) => (
                 <div key={post.id}>
-                <PostCard id={post.id}
+                <PostCard cardId={post.id}
                 content={post.content}
                 likes={post.likes}
                 createdAt={post.createdAt}
@@ -97,6 +99,7 @@ const page = async() => {
                 name={post.user.name}
                 username={post.user.username}
                 profilePhoto={post.user. profilePhoto}
+                personalId = {id}
                 />
                 </div>
               ))

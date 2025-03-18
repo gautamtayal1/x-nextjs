@@ -6,7 +6,11 @@ import { prisma } from "@/lib/prisma";
 import { currentUser } from "@clerk/nextjs/server";
 
 export default async function Home() {
-  const {id} = await currentUser()
+  let id
+  const user = await currentUser()
+  if(user) {
+    const id = user.id
+  }
   const posts = await prisma.post.findMany({
     include: {
       user: true
