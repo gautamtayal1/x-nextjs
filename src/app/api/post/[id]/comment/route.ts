@@ -20,12 +20,12 @@ export async function POST(req: Request, {params}: {params: {id: string}}) {
 export async function GET(req, {params}) {
   try {
     const {id} = await params
-    await prisma.comment.findMany({
+    const comments = await prisma.comment.findMany({
       where: {
         postId: parseInt(id)
       }, include: { post: {include: {user:true}}}
     })
-    return NextResponse.json({message: "comments received"}, {status: 201})
+    return NextResponse.json(comments)
   } catch (error) {
     console.log(error)
     return NextResponse.json({message: "Internal server error: " + error}, {status: 500})
