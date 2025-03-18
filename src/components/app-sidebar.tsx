@@ -14,9 +14,7 @@ import {
 } from "@/components/ui/sidebar"
 import Image from "next/image"
 import { Button } from "./ui/button";
-import Link from "next/link";
 
-// Menu items.
 const items = [
   {
     title: "Home",

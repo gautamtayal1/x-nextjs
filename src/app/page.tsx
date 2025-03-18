@@ -1,14 +1,13 @@
 import Navbar from "@/components/Navbar";
+import { RightBar } from "@/components/ui/RightBar";
 
 
 export default function Home() {
   return(
     <div>
-      <div className="left"></div>
-      <div className="right">
-        <Navbar />
-        
-      </div>
+      <Navbar />
+      <div className="feed w-[50vw]"></div>
+      <RightBar />
     </div>
   )
 }
