@@ -1,9 +1,12 @@
-import React from 'react'
+import { Button } from "@/components/ui/button"
+import { Textarea } from "@/components/ui/textarea"
 
-const MessageInput = () => {
+export function MessageInput() {
   return (
-    <div>MessageInput</div>
+    <div className="grid w-full gap-2">
+      <Textarea placeholder="Type your message here." />
+      <Button>Send message</Button>
+    </div>
   )
 }
 
-export default MessageInput

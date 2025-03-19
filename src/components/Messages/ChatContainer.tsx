@@ -1,13 +1,27 @@
 import { prisma } from '@/lib/prisma'
-import { currentUser } from '@clerk/nextjs/server'
+import Image from 'next/image'
 import React from 'react'
+import { MessageInput } from './MessageInput'
 
-const ChatContainer =() => {
+const ChatContainer = async({id}) => {
   
-
+  const user = await prisma.user.findUnique({where: {id}})
   return (
     <div className='w-[60vw] bg-[#171717]'>
-      <h1></h1>
+      <div className="flex items-center gap-3 p-5 border-b border-gray-800">
+        <Image src={user?.profilePhoto ?? ''}
+        width={25}
+        height={25}
+        alt="profilePhoto"
+        className="rounded"
+        />
+        <h1 className="text-2xl font-bold">{user?.name}</h1>
+      </div>
+      <div className=''>
+        <div className="fixed bottom-0 w-[55vw] p-4 bg-[#171717] border-t border-gray-800">
+          <MessageInput/>
+        </div>
+      </div>
     </div>
   )
 }
