@@ -52,12 +52,12 @@ const page = async() => {
             )}
           </div>
             <div className='flex justify-end items-center mr-5 mt-5'>
-              <Button>
+              <Button className='rounded-4xl'>
                 Edit Profile
               </Button>
             </div>
           {/* Profile Photo */}
-          <div className="absolute -bottom-10 left-4">
+          <div className="absolute -bottom-5 left-4">
             <div className="w-32 h-32 rounded-full border-4 border-white bg-white overflow-hidden">
               {user?.profilePhoto ? (
                 <Image
