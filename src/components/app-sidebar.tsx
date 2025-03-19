@@ -45,7 +45,7 @@ const items = [
 
 export function AppSidebar() {
   return (
-    <Sidebar className="max-w-[20%]">
+    <Sidebar className="max-w-[20%]" >
       <div className="flex justify-between items-center pr-3">
         <Image src="/logo2.jpg" width={50}
         height={50}
