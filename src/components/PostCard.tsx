@@ -102,6 +102,7 @@ export const PostCard = (
     <Card>
       <CardHeader>
         <div className="flex items-center gap-2">
+          <Link href={`/profile/${userId}`}>
           <Image src={profilePhoto} 
           width={25} 
           height={25}
@@ -109,6 +110,7 @@ export const PostCard = (
           className="rounded"/>
           <CardTitle>{name}</CardTitle>
           <CardDescription >@{username}</CardDescription>
+          </Link>
           {personalId !== userId && <Button 
           className="ml-[40%]"
           onClick={() => handleFollow(userId)}>
