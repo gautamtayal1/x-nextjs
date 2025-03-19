@@ -8,7 +8,7 @@ import { PostCard } from '@/components/PostCard'
 import { Button } from '@/components/ui/button'
 
 const page = async({params}) => {
-  
+  const currentUserId = (await currentUser()).id
   const {id} = params
   const user = await prisma.user.findUnique({
     where: {
@@ -48,7 +48,14 @@ const page = async({params}) => {
               <div className="w-full h-full bg-gray-700" />
             )}
           </div>
-           
+          { currentUserId === id &&
+            <div className='flex justify-end items-center mr-5 mt-5'>
+              <Button className='rounded-4xl'>
+                Edit Profile
+              </Button>
+            </div>
+          }
+            
           {/* Profile Photo */}
           <div className="absolute -bottom-5 left-4">
             <div className="w-32 h-32 rounded-full border-4 border-white bg-white overflow-hidden">
